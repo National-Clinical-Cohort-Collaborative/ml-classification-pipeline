@@ -16,6 +16,9 @@ requirements:
   # Any packages required to run your package
   run:
     - python 3.8.*
+    - pandas
+    - scikit-learn
+    - foundry_ml_sklearn
 
 build:
   script: python setup.py install --single-version-externally-managed --record=record.txt
