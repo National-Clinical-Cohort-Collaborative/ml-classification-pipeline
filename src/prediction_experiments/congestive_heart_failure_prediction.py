@@ -4,7 +4,7 @@ from dataset_prep.data_preprocessing import DatasetPrepocessing
 
 
 @transform_df(
-    Output("/UNITE/[RP-2AE058] [N3C Operational] Machine-learning resources for N3C/Blessy Antony/Cardiovascular Sequelae/src/repositories/src/prediction_experiments/congestive_heart_failure_prediction_dataset"),
+    Output("/UNITE/[RP-2AE058] [N3C Operational] Machine-learning resources for N3C/Blessy Antony/Cardiovascular Sequelae/src/repositories/datasets/congestive_heart_failure_prediction_dataset"),
     inpatients_df=Input(
         "/UNITE/[RP-2AE058] [N3C Operational] Machine-learning resources for N3C/Blessy Antony/Cardiovascular Sequelae/src/workbook-output/Dataset Definition/cp_inpatients"),
     outpatients_df=Input(
