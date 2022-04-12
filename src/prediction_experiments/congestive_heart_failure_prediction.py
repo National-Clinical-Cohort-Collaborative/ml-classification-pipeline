@@ -6,11 +6,11 @@ from dataset_prep.data_preprocessing import DatasetPrepocessing
 @transform_df(
     Output("/UNITE/[RP-2AE058] [N3C Operational] Machine-learning resources for N3C/Blessy Antony/Cardiovascular Sequelae/src/repositories/src/prediction_experiments/congestive_heart_failure_prediction_dataset"),
     inpatients_df=Input(
-        "ri.foundry.main.dataset.c1f10e8b-4021-454a-9174-a2584f789276"),
+        "/UNITE/[RP-2AE058] [N3C Operational] Machine-learning resources for N3C/Blessy Antony/Cardiovascular Sequelae/src/workbook-output/Dataset Definition/cp_inpatients"),
     outpatients_df=Input(
-        "ri.foundry.main.dataset.b78acbe7-9b26-4334-a12d-50330961e213"),
+        "/UNITE/[RP-2AE058] [N3C Operational] Machine-learning resources for N3C/Blessy Antony/Cardiovascular Sequelae/src/workbook-output/Dataset Definition/cp_outpatients"),
     patients_df=Input(
-        "ri.foundry.main.dataset.1a88939a-45ab-4427-a208-9209f9eebecf"),
+        "/UNITE/[RP-2AE058] [N3C Operational] Machine-learning resources for N3C/Blessy Antony/Cardiovascular Sequelae/src/workbook-output/Dataset Definition/cp_patients"),
 )
 def compute(inpatients_df, outpatients_df, patients_df):
     inpatients_dataset_preprocessing = DatasetPrepocessing(inpatients_df)
