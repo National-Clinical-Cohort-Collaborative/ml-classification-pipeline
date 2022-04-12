@@ -28,9 +28,9 @@ apply plugin: 'com.palantir.transforms.lang.python-library-defaults'
 // apply plugin: 'com.palantir.conda.pylint'
 
 //Apply the library sharing plugins
-apply plugin: 'com.palantir.transforms.lang.python-library'
-apply plugin: 'com.palantir.transforms.lang.python-library-defaults'
+// apply plugin: 'com.palantir.transforms.lang.python-library'
+// apply plugin: 'com.palantir.transforms.lang.python-library-defaults'
 
-pythonLibrary {	
-    publishChannelName = 'libs'	
-}
+// pythonLibrary {	
+//    publishChannelName = 'libs'	
+//}
