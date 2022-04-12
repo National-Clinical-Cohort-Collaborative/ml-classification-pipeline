@@ -16,4 +16,10 @@ setup(
 
     # Please instead specify your dependencies in conda_recipe/meta.yml
     install_requires=[],
+
+    entry_points={
+        'transforms.pipeline': [
+            'root = prediction_pipelines.prediction_pipeline:prediction_pipeline'
+        ]
+    }
 )
