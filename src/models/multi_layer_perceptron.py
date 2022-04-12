@@ -1,6 +1,4 @@
 from pyspark.sql import SparkSession
-from sklearn.model_selection import KFold
-from sklearn.model_selection import GridSearchCV
 from tensorflow import keras
 import tensorflow as tf
 import pandas as pd  # noqa
