@@ -19,6 +19,7 @@ requirements:
     - pandas
     - scikit-learn
     - foundry_ml_sklearn
+    - tensorflow
 
 build:
   script: python setup.py install --single-version-externally-managed --record=record.txt
