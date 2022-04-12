@@ -26,3 +26,11 @@ apply plugin: 'com.palantir.transforms.lang.python-library-defaults'
 // Apply the linting plugins
 // apply plugin: 'com.palantir.conda.pep8'
 // apply plugin: 'com.palantir.conda.pylint'
+
+//Apply the library sharing plugins
+apply plugin: 'com.palantir.transforms.lang.python-library'
+apply plugin: 'com.palantir.transforms.lang.python-library-defaults'
+
+pythonLibrary {	
+    publishChannelName = 'libs'	
+}
