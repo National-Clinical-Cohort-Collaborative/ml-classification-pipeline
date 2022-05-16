@@ -1,9 +1,9 @@
-import data_preprocessing
 from pyspark.sql import SparkSession
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import KFold
 from sklearn.model_selection import GridSearchCV
 import pandas as pd  # noqa
+from models import dataset_preprocessing
 
 
 class LogisticRegressionModel:
@@ -11,7 +11,7 @@ class LogisticRegressionModel:
         self.model_name = "Logistic Regression"
         self.dataset = dataset
         self.n_iterations = n_iterations
-        self.dataset_preprocessing = data_preprocessing.DatasetPreprocessing(
+        self.dataset_preprocessing = dataset_preprocessing.DatasetPreprocessing(
             self.dataset, preprocess_exclude_columns, standardize_exclude_columns, train_test_ratio)
         self.model = None  # best model from cross validation, used for testing
         self.spark_obj = SparkSession.builder.appName("pandas_to_spark").getOrCreate()
