@@ -77,9 +77,9 @@ class DatasetPreprocessing:
         # choose the lower of the two
         n_ref = min(n_positives, n_negatives)
         print(f"# df records = {df.count()}")
-        print("n_positives = {n_positives}")
-        print("n_negatives = {n_negatives}")
-        print("n_ref = {n_ref}")
+        print(f"n_positives = {n_positives}")
+        print(f"n_negatives = {n_negatives}")
+        print(f"n_ref = {n_ref}")
         # sample from postives dataset
         df_positive_samples = df_positives.sample(fraction=n_ref/n_positives)
         # sample from negatives dataset
@@ -102,14 +102,14 @@ class DatasetPreprocessing:
         # drop the person_id (identifier) and label columns from training and testing feature datasets.
         features_drop_cols = ("person_id", "label")
         X_train = balanced_train_df.drop(*features_drop_cols)
-        y_train = balanced_test_df.select("label")
+        y_train = balanced_train_df.select("label")
         X_test = balanced_test_df.drop(*features_drop_cols)
         y_test = balanced_test_df.select("label")
         print(f"X_train size = ({X_train.count()},{len(X_train.columns)})")
         print(f"y_train size = ({y_train.count()},{len(y_train.columns)})")
         print(f"X_test size = ({X_test.count()},{len(X_test.columns)})")
         print(f"y_test size = ({y_test.count()},{len(y_test.columns)})")
-        
+
         return X_train, y_train, X_test, y_test
 
     # def split_dataset(self, train_test_ratio, n_iterations):
