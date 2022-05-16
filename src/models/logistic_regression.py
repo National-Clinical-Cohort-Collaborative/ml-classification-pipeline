@@ -1,4 +1,4 @@
-from dataset_prep import data_preprocessing
+import data_preprocessing
 from pyspark.sql import SparkSession
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import KFold
