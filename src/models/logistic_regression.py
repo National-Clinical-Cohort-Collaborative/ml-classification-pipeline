@@ -32,7 +32,8 @@ class LogisticRegressionModel:
         print(f"Itr {itr}: y_train size = {y_train.shape}")
         lr_model = LogisticRegression(penalty="l1", solver="saga", max_iter=500)
 
-        # hyperparameter tuning using K-Fold Cross Validation with K = 5; shuffle the data with given random seed before splitting into batches
+        # hyperparameter tuning using K-Fold Cross Validation with K = 5;
+        # shuffle the data with given random seed before splitting into batches
         tuning_parameters = {"C": [0.01, 0.03, 0.1, 0.3, 1, 3]}
         # evaluation_params = ["average_precision"]
         evaluation_params = ["accuracy"]
