@@ -25,7 +25,7 @@ def get_auroc_distribution(self, model_ouput, n_iterations, model_name):
     """
     model_ouput: Dataframe containing the output of testing the model for 'n_iterations'
                     Dataframe shouls have the following columns: test_label, test_prediction, run
-    returns: Dataframe with columns auprc, run, model
+    returns: Dataframe with columns auroc, run, model
     """
     df = model_ouput.toPandas()
     auroc_list = []
