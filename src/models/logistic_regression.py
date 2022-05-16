@@ -16,11 +16,6 @@ class LogisticRegressionModel:
         self.model = None  # best model from cross validation, used for testing
         self.spark_obj = SparkSession.builder.appName("pandas_to_spark").getOrCreate()
 
-    def setup(self):
-        # drop the person_id (identifier) and split (dataset split identifier) columns
-        self.train_df = self.train_df.drop(columns=["person_id", "split"])
-        self.test_df = self.test_df.drop(columns=["person_id", "split"])
-
     def run_iteration(self, X_train, y_train, X_test, y_test, itr):
         X_train = X_train.toPandas()
         y_train = y_train.toPandas()
