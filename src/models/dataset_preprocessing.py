@@ -105,10 +105,11 @@ class DatasetPreprocessing:
         y_train = balanced_test_df.select("label")
         X_test = balanced_test_df.drop(*features_drop_cols)
         y_test = balanced_test_df.select("label")
-        print("X_train size = ", X_train.shape)
-        print("y_train size = ", y_train.shape)
-        print("X_test size = ", X_test.shape)
-        print("y_test size = ", y_test.shape)
+        print(f"X_train size = ({X_train.count()},{len(X_train.columns)})")
+        print(f"y_train size = ({y_train.count()},{len(y_train.columns)})")
+        print(f"X_test size = ({X_test.count()},{len(X_test.columns)})")
+        print(f"y_test size = ({y_test.count()},{len(y_test.columns)})")
+        
         return X_train, y_train, X_test, y_test
 
     # def split_dataset(self, train_test_ratio, n_iterations):
