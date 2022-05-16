@@ -18,8 +18,10 @@ class MultiLayerPerceptronModel:
     def run_iteration(self, X_train, y_train, X_test, y_test, itr):
         X_train = X_train.toPandas()
         y_train = y_train.toPandas()
+        y_train = y_train.iloc[:, 0].values
         X_test = X_test.toPandas()
         y_test = y_test.toPandas()
+        y_test = y_test.iloc[:, 0].values
 
         print(f"Itr {itr}: X_train size = {X_train.shape}")
         print(f"Itr {itr}: y_train size = {y_train.shape}")
