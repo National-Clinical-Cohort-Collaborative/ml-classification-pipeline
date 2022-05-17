@@ -6,13 +6,17 @@ from models import dataset_preprocessing
 
 
 class MultiLayerPerceptronModel:
-    def __init__(self, dataset, n_iterations, train_test_ratio, preprocess_exclude_columns, standardize_exclude_columns):
+    def __init__(self, dataset, n_iterations, train_test_ratio, preprocess_exclude_columns,
+                 standardize_exclude_columns, n_hidden_layers, hidden_layer_dimensions):
         self.model_name = "Multi Layer Perceptron"
         self.dataset = dataset
         self.n_iterations = n_iterations
         self.dataset_preprocessing = dataset_preprocessing.DatasetPreprocessing(
             self.dataset, preprocess_exclude_columns, standardize_exclude_columns, train_test_ratio)
         self.model = None  # best model from cross validation, used for testing
+        self.n_hidden_layers = n_hidden_layers  # number of hidden layers in mlp model
+        # array of size = n_hidden_layers, each element at index i specifies size of hidden layer i
+        self.hidden_layer_dimensions = hidden_layer_dimensions  # size of each hidden layer
         self.spark_obj = SparkSession.builder.appName("pandas_to_spark").getOrCreate()
 
     def run_iteration(self, X_train, y_train, X_test, y_test, itr):
@@ -59,8 +63,8 @@ class MultiLayerPerceptronModel:
 
     def create_mlp_2_model(self):
         model = keras.Sequential()
-        model.add(keras.layers.Dense(64, activation=tf.nn.relu))
-        model.add(keras.layers.Dense(32, activation=tf.nn.relu))
+        for i in range(self.n_hidden_layers):
+            model.add(keras.layers.Dense(self.hidden_layer_dimensions[i], activation=tf.nn.relu))
         model.add(keras.layers.Dense(1, activation=tf.nn.sigmoid))
         model.compile(optimizer="adam", loss="binary_crossentropy", metrics=["accuracy"])
 
