@@ -52,7 +52,6 @@ class LogisticRegressionModel:
         self.model.fit(X_train, y_train)
 
         # TESTING #
-        y_test = y_test
         print(f"Itr {itr}: X_test size = {X_test.shape}")
         print(f"Itr {itr}: y_test size = {y_test.shape}")
 

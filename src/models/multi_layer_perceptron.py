@@ -31,7 +31,6 @@ class MultiLayerPerceptronModel:
         self.model.fit(X_train, y_train, epochs=50, batch_size=64, verbose=2)
 
         # TESTING #
-        y_test = y_test[:, "label"].values
         print(f"Itr {itr}: X_test size = {X_test.shape}")
         print(f"Itr {itr}: y_test size = {y_test.shape}")
 
