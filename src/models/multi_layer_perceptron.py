@@ -39,7 +39,7 @@ class MultiLayerPerceptronModel:
         print(f"Itr {itr}: y_test size = {y_test.shape}")
 
         y_pred = self.model.predict_proba(X_test)
-        y_pred = [y[1] for y in y_pred]
+        y_pred = [y[0] for y in y_pred]
         print(f"Itr {itr}: Size of y_test = {len(y_test)}")
         print(f"Itr {itr}: Size of y_pred = {len(y_pred)}")
         result_itr = pd.DataFrame({"test_label": y_test, "test_prediction": y_pred, "run": itr})
