@@ -3,7 +3,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import KFold
 from sklearn.model_selection import GridSearchCV
 import pandas as pd  # noqa
-from models import dataset_preprocessing
+from models.sklearn import dataset_preprocessing
 
 
 class LogisticRegressionModel:

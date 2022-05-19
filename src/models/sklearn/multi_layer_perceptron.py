@@ -2,7 +2,7 @@ from pyspark.sql import SparkSession
 from tensorflow import keras
 import tensorflow as tf
 import pandas as pd  # noqa
-from models import dataset_preprocessing
+from models.sklearn import dataset_preprocessing
 
 
 class MultiLayerPerceptronModel:

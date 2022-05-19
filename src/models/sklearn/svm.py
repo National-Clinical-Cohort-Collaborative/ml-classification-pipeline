@@ -3,7 +3,7 @@ from sklearn.svm import SVC
 from sklearn.model_selection import KFold
 from sklearn.model_selection import GridSearchCV
 import pandas as pd  # noqa
-from models import dataset_preprocessing
+from models.sklearn import dataset_preprocessing
 
 
 class SupportVectorMachineModel:
