@@ -1,17 +1,18 @@
 from models.pysparkml import classification_model
-from pyspark.ml.classification import LogisticRegression
+from pyspark.ml.classification import RandomForestClassifier
 from pyspark.ml.tuning import ParamGridBuilder
 
 
-class LogisticRegressionModel(classification_model.ClassificationModel):
+class RandomForestModel(classification_model.ClassificationModel):
     def __init__(self, dataset, n_iterations, train_test_ratio, preprocess_exclude_columns,
                  index_column_name, label_column_name):
-        model_name = "Logistic Regression"
+        model_name = "Random Forest"
 
-        lr_model = LogisticRegression(maxIter=500, featuresCol='features', labelCol='label')
-        param_grid = ParamGridBuilder().addGrid(lr_model.regParam, [0.01, 0.03, 0.1, 0.3, 1, 3]).build()
+        rf_model = RandomForestClassifier(featuresCol='features', labelCol='label')
+        param_grid = ParamGridBuilder().addGrid(rf_model.numTrees, [10, 50, 100, 500, 1000]).addGrid(
+            rf_model.maxDepth, [None, 3, 5, 7, 9]).build()
 
-        classification_model.ClassificationModel.__init__(self, model_name, lr_model, param_grid,
+        classification_model.ClassificationModel.__init__(self, model_name, rf_model, param_grid,
                                                           dataset, n_iterations, train_test_ratio,
                                                           preprocess_exclude_columns,
                                                           index_column_name, label_column_name)

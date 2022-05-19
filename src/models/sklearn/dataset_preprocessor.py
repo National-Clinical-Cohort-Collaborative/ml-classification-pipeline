@@ -5,7 +5,7 @@ from sklearn.compose import ColumnTransformer
 from sklearn.preprocessing import MinMaxScaler
 
 
-class DatasetPreprocessing:
+class DatasetPreprocessor:
     """
     Preparation of datasets before passing to the ML classification models
     1. Drop column(s), if required
