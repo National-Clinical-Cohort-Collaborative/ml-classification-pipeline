@@ -2,7 +2,7 @@ from pyspark.sql import SparkSession
 from tensorflow import keras
 import tensorflow as tf
 import pandas as pd  # noqa
-from models.sklearn import dataset_preprocessing
+from models.sklearn import dataset_preprocessor
 
 
 class MultiLayerPerceptronModel:
@@ -11,7 +11,7 @@ class MultiLayerPerceptronModel:
         self.model_name = "Multi Layer Perceptron"
         self.dataset = dataset
         self.n_iterations = n_iterations
-        self.dataset_preprocessing = dataset_preprocessing.DatasetPreprocessing(
+        self.dataset_preprocessing = dataset_preprocessor.DatasetPreprocessor(
             self.dataset, preprocess_exclude_columns, standardize_exclude_columns, train_test_ratio)
         self.model = None  # best model from cross validation, used for testing
         self.n_hidden_layers = n_hidden_layers  # number of hidden layers in mlp model
