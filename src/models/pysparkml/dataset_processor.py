@@ -39,8 +39,8 @@ class DatasetProcessor:
 
     def get_feature_column_names(self):
         feature_names = self.df.columns
-        feature_names = feature_names.remove(self.index_column_name)
-        feature_names = feature_names.remove(self.label_column_name)
+        feature_names.remove(self.index_column_name)
+        feature_names.remove(self.label_column_name)
         return feature_names
 
     def get_dataset_assembler(self):
