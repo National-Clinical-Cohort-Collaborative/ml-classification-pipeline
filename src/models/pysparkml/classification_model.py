@@ -41,7 +41,7 @@ class ClassificationModel:
         self.model = kfold_cv_model.bestModel
         # TODO: print(f"Itr {itr}: Best score in trained model = {cv_model.best_score_}")
         # The best values chosen by KFold-crossvalidation
-        print(f"Itr {itr}: Best parameters in trained model = {kfold_cv_model.getEstimatorParamMaps()}")
+        # print(f"Itr {itr}: Best parameters in trained model = {kfold_cv_model.getEstimatorParamMaps()}")
 
         # TRAINING #
         print(f"Itr {itr}: Training best model from k-fold cross validation over full training set")
