@@ -90,15 +90,15 @@ coverage.xml
 *.mo
 *.pot
 
-# Django stuff:
+# Django
 *.log
 local_settings.py
 
-# Flask stuff:
+# Flask
 instance/
 .webassets-cache
 
-# Scrapy stuff:
+# Scrapy
 .scrapy
 
 # Sphinx documentation
@@ -139,3 +139,7 @@ ENV/
 
 # mypy
 .mypy_cache/
+
+# Django stuff:
+# Flask stuff:
+# Scrapy stuff:
