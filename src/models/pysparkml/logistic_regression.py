@@ -8,7 +8,7 @@ class LogisticRegressionModel(classification_model.ClassificationModel):
                  index_column_name, label_column_name):
         model_name = "Logistic Regression"
 
-        lr_model = LogisticRegression(maxIter=500, featuresCol='features', labelCol='label')
+        lr_model = LogisticRegression(maxIter=500)
         param_grid = ParamGridBuilder().addGrid(lr_model.regParam, [0.01, 0.03, 0.1, 0.3, 1, 3]).build()
 
         classification_model.ClassificationModel.__init__(self, model_name, lr_model, param_grid,

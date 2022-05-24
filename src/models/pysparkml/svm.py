@@ -8,7 +8,7 @@ class SupportVectorMachineModel(classification_model.ClassificationModel):
                  index_column_name, label_column_name):
         model_name = "Support Vector Machine"
 
-        svm_model = LinearSVC(featuresCol='features', labelCol='label')
+        svm_model = LinearSVC()
         # todo: convert to non-linear SVC (add kernel)
         param_grid = ParamGridBuilder().addGrid(svm_model.regParam, [0.1, 1, 10, 100, 1000]).build()
 

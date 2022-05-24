@@ -1,14 +1,19 @@
 import random
-from pyspark.ml.feature import VectorAssembler
+from pyspark.ml.feature import VectorAssembler, MinMaxScaler
 
 
 class DatasetProcessor:
     """
-    Preparation of datasets before passing to the ML classification models
-    1. Drop column(s), if required
-    2. Split dataset into train and test datasets in desired ratio
-    3. Create 'n' such splits for repetitive testing
-    3. Sample train and test datasets to have approximately 1:1 ratio of positive and negative samples
+    Preparation of datasets before passing to the ML classification models:
+    1. Drop column(s), if required.
+    2. Split dataset into train and test datasets in desired ratio.
+    3. Sample train and test datasets to have approximately 1:1 ratio of positive and negative samples.
+    4. Assembler: Format the datasets to meet the requirements of pyspark ml input:
+       - one features column with a dense vector of all features.
+       - one output column with the labels (classification)/ output (regression) values.
+    5. Scaler: Standardize datasets using MinMaxScaler.
+
+    TODO: add support for more scaling options.
     """
 
     def __init__(self, df, preprocess_exclude_columns, index_column_name, label_column_name, train_test_ratio):
@@ -38,14 +43,19 @@ class DatasetProcessor:
         return split_df[0], split_df[1]
 
     def get_feature_column_names(self):
+        """
+        Features column names: all columns in dataset minus
+        - index column (e.g.person_id) and
+        - label column (e.g. label)
+        """
         feature_names = self.df.columns
         feature_names.remove(self.index_column_name)
         feature_names.remove(self.label_column_name)
         return feature_names
 
-    def get_dataset_assembler(self):
+    def get_dataset_assembler(self, output_col_name="features"):
         """
-        create a dataset in the libsvm format supported by pysparkml
+        Assembler: create a dataset in the libsvm format supported by pysparkml
         libsvm format:
          - features: DenseVector of all features
          - label: column to be predicted
@@ -53,31 +63,15 @@ class DatasetProcessor:
         """
         assembler = VectorAssembler(
             inputCols=self.get_feature_column_names(),
-            outputCol="features"
+            outputCol=output_col_name
         )
         return assembler
 
-    # def standardize_dataset(self, df, ignore_columns):
-    #     """
-    #     dfs: Dataframe containing columns
-    #         "person_id", <one or more feature columns>, "label":
-    #         "split": "train" or "test"
-    #                 specifying which split the record belongs to for the particular run (value of "run" column)
-    #     ignore_columns = [] list of columns to be ignored while standardizing the columns
-    #                         e.g. person_id, label
-    #     returns: standardized Pandas Dataset using MinMaxScaler
-    #     """
-    #     df = df.toPandas()  # convert to Pandas
-    #     column_names = list(df.columns)
-    #     column_names = [col for col in column_names if col not in ignore_columns]  # retain only unignored columns
-    #     standard_scaler = MinMaxScaler()
-
-    #     std_df = None
-    #     column_transformer = ColumnTransformer([("pass_through_id", "passthrough", ignore_columns)],
-    #                                            remainder=standard_scaler)
-    #     std_df = column_transformer.fit_transform(df)
-    #     std_df = pd.DataFrame(std_df, columns=ignore_columns + column_names)
-    #     return self.spark_obj.createDataFrame(std_df)
+    def get_min_max_scaler(self, input_col_name, output_col_name):
+        """
+        Scaler: instantiate and return instance of MinMaxScaler
+        """
+        return MinMaxScaler(inputCol=input_col_name, outputCol=output_col_name)
 
     def sample_balanced_dataset(self, df):
         """
@@ -107,6 +101,11 @@ class DatasetProcessor:
         return df_sampled
 
     def run(self):
+        """
+        1. Drop column(s), if required.
+        2. Split dataset into train and test datasets in desired ratio.
+        3. Sample train and test datasets to have approximately 1:1 ratio of positive and negative samples.
+        """
         # dataset within the preprocessing object is updated.
         self.drop_columns(self.preprocess_exclude_columns)
         train_df, test_df = self.split_dataset(self.train_test_ratio)

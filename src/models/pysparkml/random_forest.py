@@ -8,7 +8,7 @@ class RandomForestModel(classification_model.ClassificationModel):
                  index_column_name, label_column_name):
         model_name = "Random Forest"
 
-        rf_model = RandomForestClassifier(featuresCol='features', labelCol='label')
+        rf_model = RandomForestClassifier()
         param_grid = ParamGridBuilder().addGrid(rf_model.numTrees, [10, 50, 100, 500, 1000]).addGrid(
             rf_model.maxDepth, [None, 3, 5, 7, 9]).build()
 
