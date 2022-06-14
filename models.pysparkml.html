@@ -95,18 +95,14 @@
 <dt class="sig sig-object py" id="models.pysparkml.dataset_processor.DatasetProcessor">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">models.pysparkml.dataset_processor.</span></span><span class="sig-name descname"><span class="pre">DatasetProcessor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">preprocess_exclude_columns</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index_column_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label_column_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_test_ratio</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#models.pysparkml.dataset_processor.DatasetProcessor" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Preparation of datasets before passing to the ML classification models:
-1. Drop column(s), if required.
-2. Split dataset into train and test datasets in desired ratio.
-3. Sample train and test datasets to have approximately 1:1 ratio of positive and negative samples.
-4. Assembler: Format the datasets to meet the requirements of pyspark ml input:</p>
-<blockquote>
-<div><ul class="simple">
-<li><p>one features column with a dense vector of all features.</p></li>
-<li><p>one output column with the labels (classification)/ output (regression) values.</p></li>
-</ul>
-</div></blockquote>
-<ol class="arabic simple" start="5">
+<p>Preparation of datasets before passing to the ML classification models:</p>
+<ol class="arabic simple">
+<li><p>Drop column(s), if required.</p></li>
+<li><p>Split dataset into train and test datasets in desired ratio.</p></li>
+<li><p>Sample train and test datasets to have approximately 1:1 ratio of positive and negative samples.</p></li>
+<li><p>Assembler: Format the datasets to meet the requirements of pyspark ml input:
+- one features column with a dense vector of all features.
+- one output column with the labels (classification)/ output (regression) values.</p></li>
 <li><p>Scaler: Standardize datasets using MinMaxScaler.</p></li>
 </ol>
 <p>TODO: add support for more scaling options.</p>
@@ -120,23 +116,25 @@ e.g. column_names = (“col_1”, “col_2”, “col_3”)</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="models.pysparkml.dataset_processor.DatasetProcessor.get_dataset_assembler">
 <span class="sig-name descname"><span class="pre">get_dataset_assembler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output_col_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'features'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#models.pysparkml.dataset_processor.DatasetProcessor.get_dataset_assembler" title="Permalink to this definition"></a></dt>
-<dd><p>Assembler: create a dataset in the libsvm format supported by pysparkml
-libsvm format:</p>
-<blockquote>
-<div><ul class="simple">
+<dd><p>Assembler: create a dataset in the libsvm format supported by pysparkml</p>
+<dl class="simple">
+<dt>libsvm format:</dt><dd><ul class="simple">
 <li><p>features: DenseVector of all features</p></li>
 <li><p>label: column to be predicted</p></li>
 </ul>
-</div></blockquote>
+</dd>
+</dl>
 <p>create a column called ‘features’ consisiting of DenseVectors of all features</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="models.pysparkml.dataset_processor.DatasetProcessor.get_feature_column_names">
 <span class="sig-name descname"><span class="pre">get_feature_column_names</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#models.pysparkml.dataset_processor.DatasetProcessor.get_feature_column_names" title="Permalink to this definition"></a></dt>
-<dd><p>Features column names: all columns in dataset minus
-- index column (e.g.person_id) and
-- label column (e.g. label)</p>
+<dd><p>Features column names: all columns in dataset minus</p>
+<ul class="simple">
+<li><p>index column (e.g.person_id) and</p></li>
+<li><p>label column (e.g. label)</p></li>
+</ul>
 </dd></dl>
 
 <dl class="py method">
@@ -158,8 +156,8 @@ libsvm format:</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="models.pysparkml.dataset_processor.DatasetProcessor.sample_balanced_dataset">
 <span class="sig-name descname"><span class="pre">sample_balanced_dataset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#models.pysparkml.dataset_processor.DatasetProcessor.sample_balanced_dataset" title="Permalink to this definition"></a></dt>
-<dd><p>df: Dataframe containing: person_id, &lt;one or more feature columns&gt;, label
-return: sampled dataset with approx 1:1 ratio of positive and negative samples</p>
+<dd><p>df: Dataframe containing: person_id, &lt;one or more feature columns&gt;, label</p>
+<p>return: sampled dataset with approx 1:1 ratio of positive and negative samples</p>
 </dd></dl>
 
 <dl class="py method">
