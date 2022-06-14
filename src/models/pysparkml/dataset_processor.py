@@ -5,6 +5,7 @@ from pyspark.ml.feature import VectorAssembler, MinMaxScaler
 class DatasetProcessor:
     """
     Preparation of datasets before passing to the ML classification models:
+
     1. Drop column(s), if required.
     2. Split dataset into train and test datasets in desired ratio.
     3. Sample train and test datasets to have approximately 1:1 ratio of positive and negative samples.
@@ -45,6 +46,7 @@ class DatasetProcessor:
     def get_feature_column_names(self):
         """
         Features column names: all columns in dataset minus
+
         - index column (e.g.person_id) and
         - label column (e.g. label)
         """
@@ -56,6 +58,7 @@ class DatasetProcessor:
     def get_dataset_assembler(self, output_col_name="features"):
         """
         Assembler: create a dataset in the libsvm format supported by pysparkml
+
         libsvm format:
          - features: DenseVector of all features
          - label: column to be predicted
@@ -70,12 +73,14 @@ class DatasetProcessor:
     def get_min_max_scaler(self, input_col_name, output_col_name):
         """
         Scaler: instantiate and return instance of MinMaxScaler
+
         """
         return MinMaxScaler(inputCol=input_col_name, outputCol=output_col_name)
 
     def sample_balanced_dataset(self, df):
         """
         df: Dataframe containing: person_id, <one or more feature columns>, label
+
         return: sampled dataset with approx 1:1 ratio of positive and negative samples
         """
         df_sampled = None
