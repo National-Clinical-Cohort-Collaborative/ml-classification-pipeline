@@ -70,26 +70,136 @@
 <section id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
 </section>
-<section id="models-sklearn-classification-model-module">
-<h2>models.sklearn.classification_model module<a class="headerlink" href="#models-sklearn-classification-model-module" title="Permalink to this heading"></a></h2>
+<section id="module-models.sklearn.classification_model">
+<span id="models-sklearn-classification-model-module"></span><h2>models.sklearn.classification_model module<a class="headerlink" href="#module-models.sklearn.classification_model" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="models.sklearn.classification_model.ClassificationModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">models.sklearn.classification_model.</span></span><span class="sig-name descname"><span class="pre">ClassificationModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">classification_model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">param_grid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_iterations</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_test_ratio</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">preprocess_exclude_columns</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">standardize_exclude_columns</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#models.sklearn.classification_model.ClassificationModel" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="models.sklearn.classification_model.ClassificationModel.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#models.sklearn.classification_model.ClassificationModel.run" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="models.sklearn.classification_model.ClassificationModel.run_iteration">
+<span class="sig-name descname"><span class="pre">run_iteration</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X_train</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_train</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">X_test</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_test</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">itr</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#models.sklearn.classification_model.ClassificationModel.run_iteration" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 </section>
-<section id="models-sklearn-dataset-preprocessor-module">
-<h2>models.sklearn.dataset_preprocessor module<a class="headerlink" href="#models-sklearn-dataset-preprocessor-module" title="Permalink to this heading"></a></h2>
+<section id="module-models.sklearn.dataset_preprocessor">
+<span id="models-sklearn-dataset-preprocessor-module"></span><h2>models.sklearn.dataset_preprocessor module<a class="headerlink" href="#module-models.sklearn.dataset_preprocessor" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="models.sklearn.dataset_preprocessor.DatasetPreprocessor">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">models.sklearn.dataset_preprocessor.</span></span><span class="sig-name descname"><span class="pre">DatasetPreprocessor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">preprocess_exclude_columns</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">standardize_exclude_columns</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_test_ratio</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#models.sklearn.dataset_preprocessor.DatasetPreprocessor" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Preparation of datasets before passing to the ML classification models
+1. Drop column(s), if required
+2. Split dataset into train and test datasets in desired ratio
+3. Create ‘n’ such splits for repetitive testing
+3. Sample train and test datasets to have approximately 1:1 ratio of positive and negative samples
+4. Standardize the dataset</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="models.sklearn.dataset_preprocessor.DatasetPreprocessor.drop_columns">
+<span class="sig-name descname"><span class="pre">drop_columns</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">column_names</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#models.sklearn.dataset_preprocessor.DatasetPreprocessor.drop_columns" title="Permalink to this definition"></a></dt>
+<dd><p>column_names: array string
+e.g. column_names = (“col_1”, “col_2”, “col_3”)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="models.sklearn.dataset_preprocessor.DatasetPreprocessor.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#models.sklearn.dataset_preprocessor.DatasetPreprocessor.run" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="models.sklearn.dataset_preprocessor.DatasetPreprocessor.sample_balanced_dataset">
+<span class="sig-name descname"><span class="pre">sample_balanced_dataset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#models.sklearn.dataset_preprocessor.DatasetPreprocessor.sample_balanced_dataset" title="Permalink to this definition"></a></dt>
+<dd><p>df: Dataframe containing: person_id, &lt;one or more feature columns&gt;, label
+return: sampled dataset with approx 1:1 ratio of positive and negative samples</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="models.sklearn.dataset_preprocessor.DatasetPreprocessor.split_dataset">
+<span class="sig-name descname"><span class="pre">split_dataset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">train_test_ratio</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#models.sklearn.dataset_preprocessor.DatasetPreprocessor.split_dataset" title="Permalink to this definition"></a></dt>
+<dd><p>train_test_ratio = [train_proportion, test_proportion]
+e.g. train_test_ratio = [0.8, 0.2]
+return: train_df, test_df</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="models.sklearn.dataset_preprocessor.DatasetPreprocessor.standardize_dataset">
+<span class="sig-name descname"><span class="pre">standardize_dataset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore_columns</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#models.sklearn.dataset_preprocessor.DatasetPreprocessor.standardize_dataset" title="Permalink to this definition"></a></dt>
+<dd><dl>
+<dt>dfs: Dataframe containing columns</dt><dd><p>“person_id”, &lt;one or more feature columns&gt;, “label”:
+“split”: “train” or “test”</p>
+<blockquote>
+<div><p>specifying which split the record belongs to for the particular run (value of “run” column)</p>
+</div></blockquote>
+</dd>
+<dt>ignore_columns = [] list of columns to be ignored while standardizing the columns</dt><dd><p>e.g. person_id, label</p>
+</dd>
+</dl>
+<p>returns: standardized Pandas Dataset using MinMaxScaler</p>
+</dd></dl>
+
+</dd></dl>
+
 </section>
-<section id="models-sklearn-logistic-regression-module">
-<h2>models.sklearn.logistic_regression module<a class="headerlink" href="#models-sklearn-logistic-regression-module" title="Permalink to this heading"></a></h2>
+<section id="module-models.sklearn.logistic_regression">
+<span id="models-sklearn-logistic-regression-module"></span><h2>models.sklearn.logistic_regression module<a class="headerlink" href="#module-models.sklearn.logistic_regression" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="models.sklearn.logistic_regression.LogisticRegressionModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">models.sklearn.logistic_regression.</span></span><span class="sig-name descname"><span class="pre">LogisticRegressionModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_iterations</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_test_ratio</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">preprocess_exclude_columns</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">standardize_exclude_columns</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#models.sklearn.logistic_regression.LogisticRegressionModel" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#models.sklearn.classification_model.ClassificationModel" title="models.sklearn.classification_model.ClassificationModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">ClassificationModel</span></code></a></p>
+</dd></dl>
+
 </section>
-<section id="models-sklearn-multi-layer-perceptron-module">
-<h2>models.sklearn.multi_layer_perceptron module<a class="headerlink" href="#models-sklearn-multi-layer-perceptron-module" title="Permalink to this heading"></a></h2>
+<section id="module-models.sklearn.multi_layer_perceptron">
+<span id="models-sklearn-multi-layer-perceptron-module"></span><h2>models.sklearn.multi_layer_perceptron module<a class="headerlink" href="#module-models.sklearn.multi_layer_perceptron" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="models.sklearn.multi_layer_perceptron.MultiLayerPerceptronModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">models.sklearn.multi_layer_perceptron.</span></span><span class="sig-name descname"><span class="pre">MultiLayerPerceptronModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_iterations</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_test_ratio</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">preprocess_exclude_columns</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">standardize_exclude_columns</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_hidden_layers</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hidden_layer_dimensions</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#models.sklearn.multi_layer_perceptron.MultiLayerPerceptronModel" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="models.sklearn.multi_layer_perceptron.MultiLayerPerceptronModel.create_mlp_2_model">
+<span class="sig-name descname"><span class="pre">create_mlp_2_model</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#models.sklearn.multi_layer_perceptron.MultiLayerPerceptronModel.create_mlp_2_model" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="models.sklearn.multi_layer_perceptron.MultiLayerPerceptronModel.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#models.sklearn.multi_layer_perceptron.MultiLayerPerceptronModel.run" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="models.sklearn.multi_layer_perceptron.MultiLayerPerceptronModel.run_iteration">
+<span class="sig-name descname"><span class="pre">run_iteration</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X_train</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_train</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">X_test</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_test</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">itr</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#models.sklearn.multi_layer_perceptron.MultiLayerPerceptronModel.run_iteration" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 </section>
-<section id="models-sklearn-random-forest-module">
-<h2>models.sklearn.random_forest module<a class="headerlink" href="#models-sklearn-random-forest-module" title="Permalink to this heading"></a></h2>
+<section id="module-models.sklearn.random_forest">
+<span id="models-sklearn-random-forest-module"></span><h2>models.sklearn.random_forest module<a class="headerlink" href="#module-models.sklearn.random_forest" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="models.sklearn.random_forest.RandomForestModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">models.sklearn.random_forest.</span></span><span class="sig-name descname"><span class="pre">RandomForestModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_iterations</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_test_ratio</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">preprocess_exclude_columns</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">standardize_exclude_columns</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#models.sklearn.random_forest.RandomForestModel" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#models.sklearn.classification_model.ClassificationModel" title="models.sklearn.classification_model.ClassificationModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">ClassificationModel</span></code></a></p>
+</dd></dl>
+
 </section>
-<section id="models-sklearn-svm-module">
-<h2>models.sklearn.svm module<a class="headerlink" href="#models-sklearn-svm-module" title="Permalink to this heading"></a></h2>
+<section id="module-models.sklearn.svm">
+<span id="models-sklearn-svm-module"></span><h2>models.sklearn.svm module<a class="headerlink" href="#module-models.sklearn.svm" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="models.sklearn.svm.SupportVectorMachineModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">models.sklearn.svm.</span></span><span class="sig-name descname"><span class="pre">SupportVectorMachineModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_iterations</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_test_ratio</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">preprocess_exclude_columns</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">standardize_exclude_columns</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#models.sklearn.svm.SupportVectorMachineModel" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#models.sklearn.classification_model.ClassificationModel" title="models.sklearn.classification_model.ClassificationModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">ClassificationModel</span></code></a></p>
+</dd></dl>
+
 </section>
-<section id="module-contents">
-<h2>Module contents<a class="headerlink" href="#module-contents" title="Permalink to this heading"></a></h2>
+<section id="module-models.sklearn">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-models.sklearn" title="Permalink to this heading"></a></h2>
 </section>
 </section>
 
