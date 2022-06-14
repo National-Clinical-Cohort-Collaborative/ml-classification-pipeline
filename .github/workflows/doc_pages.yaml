@@ -18,8 +18,8 @@ jobs:
         python-version: 3.9
 
     - name: install
-      run: pip3 install sphinx sphinx-rtd-theme recommonmark
-
+      run: pip3 install sphinx sphinx-rtd-theme recommonmark pyspark pandas scikit-learn tensorflow
+      
     - name: Build documentation.
       run: |
         mkdir gh-pages
